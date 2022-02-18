@@ -1,5 +1,6 @@
 package se.lexicon.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import se.lexicon.dao.sequencer.Sequencers;
 import se.lexicon.model.entity.LearnedSkill;
@@ -14,6 +15,7 @@ public class LearnedSkillDAOImpl implements LearnedSkillDAO {
     private final Collection<LearnedSkill> learnedSkills;
     private final Sequencers sequencers;
 
+    @Autowired
     public LearnedSkillDAOImpl(Sequencers sequencers) {
         this.sequencers = sequencers;
         learnedSkills = new HashSet<>();

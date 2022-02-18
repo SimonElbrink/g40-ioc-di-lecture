@@ -6,11 +6,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import se.lexicon.config.ApplicationConfiguration;
 import se.lexicon.dao.*;
 import se.lexicon.model.dto.LearnedSkillFormDTO;
+import se.lexicon.model.entity.Skill;
 import se.lexicon.model.entity.Student;
 import se.lexicon.service.LearnedSkillService;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class App 
 {
@@ -32,17 +32,17 @@ public class App
 
         studentDAO.findAll().forEach(System.out::println);
 
+        SkillDAO skillDAO = context.getBean(SkillDAO.class);
 
-        Scanner scanner = context.getBean(Scanner.class);
-        String s = scanner.nextLine();
-        System.out.println(s);
+        Skill jMaster = skillDAO.save(new Skill("Java Master", "to become a Java master you need to spend a lot of time to make good progress."));
 
+        LearnedSkillFormDTO  learnedSkill = new LearnedSkillFormDTO();
+        learnedSkill.setGrade(2);
+        learnedSkill.setSkillId(jMaster.getId());
+
+        learnedSkillService.create(learnedSkill);
 
         ObjectMapper objectMapper = context.getBean(ObjectMapper.class);
-        System.out.println(objectMapper.writeValueAsString(tobias));
-
-
-
-
+        System.out.println(objectMapper.writeValueAsString(learnedSkill));
     }
 }
