@@ -1,5 +1,6 @@
 package se.lexicon.dao;
 
+import org.springframework.stereotype.Component;
 import se.lexicon.dao.sequencer.Sequencers;
 import se.lexicon.model.entity.LearnedSkill;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;
-
+@Component
 public class LearnedSkillDAOImpl implements LearnedSkillDAO {
 
     private final Collection<LearnedSkill> learnedSkills;

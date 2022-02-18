@@ -1,5 +1,6 @@
 package se.lexicon.dao;
 
+import org.springframework.stereotype.Component;
 import se.lexicon.dao.sequencer.Sequencers;
 import se.lexicon.model.entity.Skill;
 
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;
-
+@Component
 public class SkillDAOImpl implements  SkillDAO{
 
     private final Collection<Skill> skills;
